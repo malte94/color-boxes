@@ -23,7 +23,7 @@ export default function App(){
         let drawBoxes = [];
         while (n < boxes) {
             drawBoxes.push(
-            <ColorBox color={{getRandomColor}} />
+            <ColorBox color={{getRandomColor}} key={n} />
             );
             n++;
         }
