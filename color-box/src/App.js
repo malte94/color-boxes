@@ -1,9 +1,9 @@
-import React, {useState, useEffect, useContext} from 'react'
+import React, {useState, useEffect} from 'react'
 import './App.css'
 
 /* ----------------------------- Global --------------------------- */
 
-const boxes = 32; 
+const boxes = 16; 
 
 function getRandomColor() {
     var letters = '0123456789ABCDEF';
