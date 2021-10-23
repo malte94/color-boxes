@@ -1,25 +1,52 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState, useEffect} from 'react'
+import './App.css'
 
-function App() {
-  return (
+/* ----------------------------- Global --------------------------- */
+
+function getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }
+
+/* --------------------------------------------------------------- */
+
+export default function App(props){ 
+    
+    const drawBoxes = () => {
+        let n = 0;
+        let drawBoxes = [];
+        while (n < props.boxes) {
+            drawBoxes.push(
+            <ColorBox color={{getRandomColor}} key={n} />
+            );
+            n++;
+        }
+        return drawBoxes;
+    }
+
+    return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        {drawBoxes()}
     </div>
-  );
+    )
 }
 
-export default App;
+export function ColorBox() {
+
+    const [color, setColor] = useState(clickHandler())
+
+    const clickHandler = () => {
+        setColor(getRandomColor())
+    }
+
+    return (
+        <div className="color-box" 
+             onClick={clickHandler}
+             style={{backgroundColor: color}}/>
+    )
+
+}
